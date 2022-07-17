@@ -1,0 +1,78 @@
+﻿@page
+@model carRental.controllers.AddModel
+@{
+
+}
+<br />
+<h1>Add a car</h1>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fase show" role="alert">
+        <strong>@Model.errorMessage</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+}
+    <form method="post">
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">car description</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="description" value="@Model.carDetails.description" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">car price</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="price" value="@Model.carDetails.price" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">discount</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="discount" value="@Model.carDetails.discount" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">extras</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="available_extras" value="@Model.carDetails.available_extras" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">minimum age</label>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" name="minimum_driver_age" value="@Model.carDetails.minimum_driver_age" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">available dates</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" name="available_dates" value="@Model.carDetails.available_dates" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-sm-3 col-form-label">available locations</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="available_locations" value="@Model.carDetails.available_locations" />
+            </div>
+        </div>
+        @if (Model.successMessage.Length > 0)
+        {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fase show" role="alert">
+                    <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+                </div>
+            </div>
+        </div>
+        }
+        <div class="row mb-3">
+            <div class="offset-sm-3 col-sm-3 d-grid">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-sm-3 d-grid">
+                <a class="btn btn-outline-primary" href="/">Cancel</a>
+            </div>
+        </div>
+    </form>

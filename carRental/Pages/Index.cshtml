@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div><a class="btn btn-primary" href="/add">Add new car</a></div>
+    <br />
+    <form method="post">
+        <p>
+            Search: <input type="text" name="SearchString" value="@Model.SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+    <br />
+    <table style="border:1px solid gray;padding: 5px">
+        <thead>
+            <tr style="border:1px solid gray;padding: 5px">
+                <th style="padding: 5px">id</th>
+                <th style="padding: 5px">car description</th>
+                <th style="padding: 5px">discount</th>
+                <th style="padding: 5px">available extras</th>
+                <th style="padding: 10px">price</th>
+                <th style="padding: 10px">minimum age</th>
+                <th style="padding: 10px">available dates</th>
+                <th style="padding: 10px">available locations</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.listOfCars)
+            {
+                <tr style="border:1px solid gray;padding: 5px">
+                    <td style="padding: 15px">@item.id</td>
+                    <td style="padding: 5px">@item.description</td>
+                    <td style="padding: 5px">@item.discount</td>
+                    <td style="padding: 5px">@item.available_extras</td>
+                    <td style="padding:15px;">@item.price</td>
+                    <td style="padding:15px;">@item.minimum_driver_age</td>
+                    <td style="padding:15px;">@item.available_dates.ToShortDateString()</td>
+                    <td style="padding:15px;">@item.available_locations</td>
+                    <td style="padding: 15px">
+                        <a style="padding-right:5px" class="btn btn-primary" href="/edit?id=@item.id">edit</a>
+                        <a class="btn btn-primary" href="/delete?id=@item.id">remove</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

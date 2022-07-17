@@ -1,0 +1,20 @@
+﻿@page
+@using carRental.model;
+@{
+    try
+    {
+        int id = Int32.Parse(Request.Query["id"]);
+        var cars = new cars();
+        var listOfCars = cars.deleteCar(id);
+
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+        throw;
+    }
+    Response.Redirect("Index");
+}
+
+
+
